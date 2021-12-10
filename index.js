@@ -29,7 +29,7 @@ for (const file of eventFiles) {
 	}
 }
 
-process.on('unhandledRejection', () => {})
+process.on('error', (error)=> {console.error(error)})
 
 keepAlive()
 module.exports = {client,updateCommands}

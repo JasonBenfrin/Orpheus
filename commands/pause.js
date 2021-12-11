@@ -1,18 +1,19 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const player = require('./play')
 const valid = require('../functions/valid')
-
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('pause')
 		.setDescription('Pause the song'),
 	async execute(interaction) {
-    const me = interaction.guild.me.voice.channelId;
-    const user = interaction.member.voice.channelId
+    const player = interaction.client.playerManager.get(interaction.guildId)
 
-		if(player.player.state.status === 'playing' && valid(interaction)){
-      player.player.pause();
+    if(!valid(interaction)) return
+
+    if(player.state.status === 'idle') return interaction.reply('**There is no song currently playing**')
+    
+		if(player.state.status === 'playing'){
+      player.pause();
       return interaction.reply('**Paused :pause_button: **')
     }else{
       return interaction.reply('**The music is already paused!**')

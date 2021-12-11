@@ -4,8 +4,6 @@ const { createAudioResource, createAudioPlayer, VoiceConnectionStatus, entersSta
 const ytdl = require('ytdl-core')
 const yts = require('yt-search')
 
-const player = createAudioPlayer();
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('play')
@@ -17,13 +15,17 @@ module.exports = {
         .setRequired(true)
     ),
 	async execute(interaction) {
-    
+
     //checking everything
     const channel = interaction.member.voice.channel;
-    const me = interaction.guild.me.voice.channelId
-    const channelId = channel.id
+    const me = interaction.guild.me.voice.channelId;
 
-    if(!channel) return interaction.reply('Please join a voice channel!');
+    const voiceGuild = interaction.member.voice.guild.id
+    const textGuild = interaction.guildId
+
+    if(!channel || voiceGuild != textGuild) return interaction.reply('Please join a voice channel!');
+
+    const channelId = channel.id
 
     const permissions = channel.permissionsFor(interaction.client.user);
     
@@ -48,7 +50,9 @@ module.exports = {
         adapterCreator: interaction.guild.voiceAdapterCreator,
         selfMute: false,
       });
-
+      
+      const player = createAudioPlayer();
+      interaction.client.playerManager.set(interaction.guildId, player)
       const resource = createAudioResource(stream)
 
       player.setMaxListeners(100)
@@ -67,6 +71,12 @@ module.exports = {
           connection.destroy();
         }
       });
+
+      //error handlers For error code 403 from ytdl-core
+
+      player.on('error', () => {
+        return interaction.editReply('*Something went wrong!\nPlease retry!*')
+      });
       
       return interaction.editReply(`**Now Playing :play_pause: : ${video.title}** (${video.timestamp}) | *${ video.author.name }*  `)     
     }
@@ -76,14 +86,6 @@ module.exports = {
       play(video.url)
     }else{
       return interaction.reply('*Sorry. Requested song is not found.*')
-    }
-
-    //error handlers
-
-    player.on('error', error => {
-      return interaction.followUp('*Something went wrong!\nPlease retry!*')
-    });
-    
+    }    
 	},
-  player
 }

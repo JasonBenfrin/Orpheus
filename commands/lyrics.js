@@ -33,7 +33,7 @@ module.exports = {
     let lyric = await lyFind('', interaction.options.getString('song'));
     if(lyric){
       embed.setDescription(lyric)
-      return interaction.editReply({embeds: [embed], content: ''})
+      return interaction.editReply({embeds: [embed], content: ' '})
     }else{
       return interaction.editReply(`*There is no lyrics called ${interaction.options.getString('song')}.*`)
     }

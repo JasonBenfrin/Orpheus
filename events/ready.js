@@ -8,5 +8,7 @@ module.exports = {
     index.client.guilds.cache.forEach(guild => {
       index.updateCommands(guild.id)
     })
+
+    index.client.playerManager = new Map()
   }
 } 

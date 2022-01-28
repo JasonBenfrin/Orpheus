@@ -9,6 +9,11 @@ module.exports = {
       index.updateCommands(guild.id)
     })
 
-    index.client.playerManager = new Map()
+    index.client.connectionManager = new Map();
+    index.client.playlistManager = new Map();
+    index.client.beforeShuffle = new Map();
+    index.client.playerManager = new Map();
+    index.client.queueManager = new Map();
+    index.client.loopOption = new Map();
   }
 } 

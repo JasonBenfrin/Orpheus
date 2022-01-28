@@ -28,8 +28,13 @@ module.exports = {
       key: ytKey
     };
     let lyric = await lyFind('', interaction.options.getString('song'));
+<<<<<<< Updated upstream
     search(interaction.options.getString('song'),opts,function(err,result){
       const video = result[0]
+=======
+    search(interaction.options.getString('song'),opts,async function(err,result){
+      const video = await result[0]
+>>>>>>> Stashed changes
       if(lyric){
         const embed = new MessageEmbed()
           .setTitle(video.title)
@@ -43,6 +48,10 @@ module.exports = {
       }else{
         return interaction.editReply(`*There is no lyrics called ${interaction.options.getString('song')}.*`)
       }
+<<<<<<< Updated upstream
     })    
+=======
+    })
+>>>>>>> Stashed changes
 	}
 };

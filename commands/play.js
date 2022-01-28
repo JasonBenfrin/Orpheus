@@ -1,14 +1,18 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+<<<<<<< Updated upstream
 const { joinVoiceChannel } = require('@discordjs/voice');
 const { createAudioResource, createAudioPlayer, VoiceConnectionStatus, entersState } = require('@discordjs/voice');
 const ytdl = require('ytdl-core')
 const yts = require('youtube-search')
 const ytKey = process.env['ytAPI']
+=======
+const { search } = require('../functions/search.js')
+>>>>>>> Stashed changes
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('play')
-		.setDescription("Plays a song.")
+		.setDescription('Plays a song')
     .addStringOption(option => 
       option
         .setName('keywords')
@@ -16,27 +20,21 @@ module.exports = {
         .setRequired(true)
     ),
 	async execute(interaction) {
-
-    //checking everything
+    //Checking everything
     const channel = interaction.member.voice.channel;
     const me = interaction.guild.me.voice.channelId;
 
     const voiceGuild = interaction.member.voice.guild.id
     const textGuild = interaction.guildId
 
-    if(!channel || voiceGuild != textGuild) return interaction.reply('Please join a voice channel!');
+    if(!channel || voiceGuild != textGuild) return interaction.reply('**Please join a voice channel!**');
 
     const channelId = channel.id
 
-    const permissions = channel.permissionsFor(interaction.client.user);
-    
-    if(!permissions.has('CONNECT')) return interaction.reply('I don\'t have the right permissions to connect. :cry:\nPlease ask the administrators to set permissions.')
-    if(!permissions.has('SPEAK')) return interaction.reply('I don\'t have the right permissions to speak. :cry:\nPlease ask the administrators to set permissions.')
-
     if(me && me != channelId) return interaction.reply('**The bot is already in another voice channel**')
-
     await interaction.reply(`**Searching for :** *${interaction.options.getString('keywords')}*`)
 
+<<<<<<< Updated upstream
     //using youtube-search
 		var opts = {
       maxResults: 1,
@@ -106,3 +104,8 @@ module.exports = {
     
 	},
 }
+=======
+    search(interaction.options.getString('keywords'), interaction, false)
+	}
+};
+>>>>>>> Stashed changes

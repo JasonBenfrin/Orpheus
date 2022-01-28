@@ -1,10 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { valid } = require('../functions/valid')
+const { valid } = require('../functions/valid.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('stop')
-		.setDescription('Stops the song and deletes the Queue'),
+		.setName('skip')
+		.setDescription('Skips the current song from the queue.'),
 	async execute(interaction) {
     const me = interaction.guild.me.voice.channelId;
     const user = interaction.member.voice.channelId
@@ -15,14 +15,8 @@ module.exports = {
     if(!player) return interaction.reply('**There is no song currently playing**')
     
     if(me === user) {
-      interaction.client.connectionManager.delete(interaction.guildId)
-      interaction.client.playerManager.delete(interaction.guildId)
-      interaction.client.playlistManager.delete(interaction.guildId)
-      interaction.client.queueManager.delete(interaction.guildId)
-      interaction.client.beforeShuffle.delete(interaction.guildId)
-      interaction.client.loopOption.set(interaction.guildId, 'off')
       player.stop()
-      return interaction.reply('**Stopped** :stop_button:')
+      return interaction.reply('**Skipped** :track_next:')
     }else{
       return interaction.reply('You are not in the same channel as the bot!')
     }

@@ -4,7 +4,7 @@ const token = process.env['token']
 const updateCommands = require('./deploy-commands')
 const keepAlive = require('./server.js')
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_VOICE_STATES ] });
+const client = new Client({intents: new Intents(129)});
 
 //Commands Handler
 
@@ -29,7 +29,7 @@ for (const file of eventFiles) {
 	}
 }
 
-process.on('error', (error)=> {console.error(error)})
+// client.on('debug', console.log)
 
 keepAlive()
 module.exports = {client,updateCommands}

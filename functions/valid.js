@@ -11,8 +11,7 @@ function valid(interaction) {
     interaction.reply('**I\'m not in a voice channel!**')
     return false
   }
-
   return true
 }
 
-module.exports = valid
+module.exports = { valid }

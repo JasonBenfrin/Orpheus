@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js')
-const yts = require('yt-search');
+// const yts = require('yt-search');
+const ytKey = process.env['ytAPI']
+const search = require('youtube-search')
 const lyFind = require('lyrics-finder')
 
 module.exports = {
@@ -21,22 +23,35 @@ module.exports = {
     ),
 	async execute(interaction) {
     interaction.reply(`**Searching :** *${interaction.options.getString('song')}*`);
-		const results = await yts(interaction.options.getString('song'));
-    const video = results.videos[0];
-    const embed = new MessageEmbed()
-      .setTitle(video.title)
-      .setURL(video.url)
-      .setThumbnail(video.image)
-      .setColor('RANDOM')
-      .setTimestamp()
-      .setFooter(`Requested by: ${interaction.user.tag}`, interaction.user.displayAvatarURL());
+    var opts = {
+      maxResults: 1,
+      key: ytKey
+    };
     let lyric = await lyFind('', interaction.options.getString('song'));
-    if(lyric){
-      embed.setDescription(lyric)
-      return interaction.editReply({embeds: [embed], content: ' '})
-    }else{
-      return interaction.editReply(`*There is no lyrics called ${interaction.options.getString('song')}.*`)
-    }
-    // const lyrics = lyFind(video.author.name, video.title);
+<<<<<<< Updated upstream
+    search(interaction.options.getString('song'),opts,function(err,result){
+      const video = result[0]
+=======
+    search(interaction.options.getString('song'),opts,async function(err,result){
+      const video = await result[0]
+>>>>>>> Stashed changes
+      if(lyric){
+        const embed = new MessageEmbed()
+          .setTitle(video.title)
+          .setURL(video.link)
+          .setThumbnail(video.thumbnails.medium.url)
+          .setColor('RANDOM')
+          .setTimestamp()
+          .setFooter(`Requested by: ${interaction.user.tag}`, interaction.user.displayAvatarURL());
+        embed.setDescription(lyric)
+        return interaction.editReply({embeds: [embed], content: ' '})
+      }else{
+        return interaction.editReply(`*There is no lyrics called ${interaction.options.getString('song')}.*`)
+      }
+<<<<<<< Updated upstream
+    })    
+=======
+    })
+>>>>>>> Stashed changes
 	}
 };

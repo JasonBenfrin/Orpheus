@@ -2,7 +2,8 @@ const { play } = require('../functions/play.js');
 const { convert } = require('../functions/time.js')
 const ytdl = require('ytdl-core')
 const yts = require('youtube-search')
-const ytKey = process.env['ytAPI']
+require('dotenv').config();
+const ytKey = process.env.ytAPI
 
 class Song {
   constructor(name, time, url, author) {

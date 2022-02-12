@@ -1,4 +1,4 @@
-  const { AudioPlayerStatus, createAudioPlayer, joinVoiceChannel, createAudioResource } = require("@discordjs/voice")
+const { AudioPlayerStatus, createAudioPlayer, joinVoiceChannel, createAudioResource } = require("@discordjs/voice")
 const ytdl = require('ytdl-core')
 
 function play(client, guildId, player, connection) {

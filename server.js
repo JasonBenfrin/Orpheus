@@ -1,14 +1,16 @@
 const express = require("express")
-const server = express()
+const app = express()
 
-server.all("/",(req,res)=>{
-  res.send("I'm alive")
+app.use(express.static(__dirname))
+
+app.all("/",(req,res)=>{
+  res.sendFile("../err/404.html")
 } );
 
 function keepAlive(){
-  server.listen(3000,()=>{
+  app.listen(3000,()=>{
     console.log("Alive")
   })
 }
 
-module.exports=keepAlive
+module.exports = { keepAlive }

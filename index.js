@@ -3,7 +3,7 @@ require('dotenv').config();
 const { Client, Collection, Intents } = require('discord.js');
 const token = process.env.token
 const updateCommands = require('./deploy-commands')
-const keepAlive = require('./server.js')
+const { keepAlive } = require('./server.js')
 
 const client = new Client({intents: new Intents(129)});
 
@@ -32,6 +32,6 @@ for (const file of eventFiles) {
 
 // client.on('debug', console.log)
 
-// keepAlive()
+keepAlive()
 module.exports = {client,updateCommands}
 client.login(token);

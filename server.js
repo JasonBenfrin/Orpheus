@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express()
+require('dotenv').config()
 
 app.use(express.static(__dirname))
 
@@ -8,8 +9,9 @@ app.all("/",(req,res)=>{
 } );
 
 function keepAlive(){
-  app.listen(3000,()=>{
-    console.log("Alive")
+  const port = process.env.PORT || 3000
+  app.listen(port,()=>{
+    console.log(`Server listening at port ${port}`)
   })
 }
 

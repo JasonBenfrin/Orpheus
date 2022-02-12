@@ -3,7 +3,7 @@ const { valid } = require('../functions/valid.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('shuffle')
+		.setName('2shuffle')
 		.setDescription('Shuffles the current Queue.'),
 	async execute(interaction) {
     const me = interaction.guild.me.voice.channelId;

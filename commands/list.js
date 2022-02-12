@@ -3,7 +3,7 @@ const { convert } = require('../functions/time.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('list')
+		.setName('2list')
 		.setDescription('Shows a list of songs that are currently queued.'),
 	async execute(interaction) {
     let msg = ":arrow_forward: ";

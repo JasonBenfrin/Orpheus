@@ -3,7 +3,7 @@ const { valid } = require('../functions/valid.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('loop')
+		.setName('2loop')
 		.setDescription('Loops a single song or multiple ones.')
     .addStringOption(option => 
       option

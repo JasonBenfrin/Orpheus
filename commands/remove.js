@@ -4,7 +4,7 @@ const { convert } = require('../functions/time.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('remove')
+		.setName('2remove')
 		.setDescription('Removes a song from the Queue')
     .addIntegerOption(option =>
       option

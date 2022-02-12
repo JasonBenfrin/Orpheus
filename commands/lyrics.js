@@ -7,7 +7,7 @@ const lyFind = require('lyrics-finder')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('lyrics')
+		.setName('2lyrics')
 		.setDescription('Shows the lyrics of the song')
     .addStringOption(option => 
       option

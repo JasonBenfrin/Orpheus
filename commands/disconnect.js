@@ -3,7 +3,7 @@ const { valid } = require("../functions/valid.js")
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('disconnect')
+		.setName('2disconnect')
 		.setDescription('Disconnects the bot from the channel.'),
 	async execute(interaction) {
     const me = interaction.guild.me.voice.channelId;

@@ -3,7 +3,7 @@ const { search } = require('../functions/search.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('play')
+		.setName('2play')
 		.setDescription('Plays a song')
     .addStringOption(option => 
       option

@@ -3,7 +3,7 @@ const { valid } = require('../functions/valid')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('stop')
+		.setName('2stop')
 		.setDescription('Stops the song and deletes the Queue'),
 	async execute(interaction) {
     const me = interaction.guild.me.voice.channelId;

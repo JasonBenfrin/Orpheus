@@ -1,0 +1,87 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+table{
+    width: 100%;
+}
+
+#head{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.head_row *,.head_button > * {
+    background-color: rgb(144, 211, 255);
+    width: 33.33%;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 200px;
+    margin-top: 0;
+    color: rgb(159, 212, 255);
+    text-shadow: 12px 7px rgb(109, 109, 109);
+}
+
+h3{
+    text-align: center;
+    color: rgb(159, 212, 255);
+    text-shadow: 2px 2px rgb(109, 109, 109);
+    font-size: 40px;
+    padding-bottom: 38px;
+}
+
+#fade{
+    top: 10px;
+    position: sticky;
+    background-image: linear-gradient(rgb(144, 211, 255), rgba(0, 0, 0, 0.007));
+}
+
+.heading{
+    text-align: center;
+    font-size: 40px;
+    color: rgba(117, 0, 98, 0.452);
+    font-family: 'Berkshire Swash', cursive;
+}
+
+.head_button *{
+    font-size: 30px;
+    font-family: 'DM Sans', sans-serif;
+    color: rgba(117, 0, 98, 0.452);
+}
+
+.head_button *:hover{
+    color: aliceblue;
+}
+
+button{
+    width: 100%;
+    border: 0;
+    background-color: rgb(144, 211, 255);
+}
+
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgb(113, 198, 255);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(66, 163, 228);
+}

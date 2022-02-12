@@ -4,7 +4,7 @@ const app = express()
 app.use(express.static(__dirname))
 
 app.all("/",(req,res)=>{
-  res.sendFile("../err/404.html")
+  res.render("../err/404.html")
 } );
 
 function keepAlive(){

@@ -16,11 +16,10 @@ module.exports = {
 		if(player) player.stop()
     let connection = interaction.client.connectionManager.get(interaction.guildId)
 		if(connection) connection.destroy()
-    connection.destroy()
     connection = undefined
     delete(connection)
     interaction.client.connectionManager.delete(interaction.guildId)
-    interaction.client.playlistManagaer.delete(interaction.guildId)
+    interaction.client.playlistManager.delete(interaction.guildId)
     interaction.client.playerManager.delete(interaction.guildId)
     interaction.client.beforeShuffle.delete(interaction.guildId)
     interaction.client.queueManager.delete(interaction.guildId)

@@ -1,9 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { valid } = require('../functions/valid')
 
+
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('2pause')
+		.setName('pause')
 		.setDescription('Pauses the song.'),
 	async execute(interaction) {
     const player = interaction.client.playerManager.get(interaction.guildId)

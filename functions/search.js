@@ -2,15 +2,15 @@ const { play } = require('../functions/play.js');
 const { convert } = require('../functions/time.js')
 const ytdl = require('ytdl-core')
 const yts = require('youtube-search')
-require('dotenv').config();
-const ytKey = process.env.ytAPI
+const ytKey = process.env['ytAPI']
 
 class Song {
-  constructor(name, time, url, author) {
+  constructor(name, time, url, author, live) {
     this.name = name;
     this.time = time;
     this.url = url;
     this.author = author;
+		this.live = live;
   }
 }
 
@@ -25,7 +25,7 @@ async function search(keyword, interaction, next){
 
   await yts(keyword,opts,async function(err, result){
     if(err) {
-      console.error(  err)
+      console.error(err)
       return interaction.editReply(`**No results found for:** *${keyword}*`)
     }
     const video = await result[0]
@@ -36,7 +36,7 @@ async function search(keyword, interaction, next){
 
     const title = video.title.replace("&amp;", '&').replace("&gt;", '>').replace("&lt;", '<').replace("&quot;", '\"').replace("&#39;", '\'').replace('&#039;', '\'')
 
-    const song = new Song(title, time, video.link, video.channelTitle)
+    const song = new Song(title, time, video.link, video.channelTitle, info.videoDetails.isLive)
 
     if(client.queueManager.get(interaction.guildId)) {
 
@@ -71,7 +71,11 @@ async function search(keyword, interaction, next){
       client.loopOption.set(interaction.guildId, 'off')
     }
     play(interaction)
-    return interaction.editReply(`**Added to Queue :arrows_counterclockwise: : ${title}** (${timeHHMMSS}) | *${ video.channelTitle }*`)
+		if(info.videoDetails.isLive){
+    	return interaction.editReply(`**Added to Queue :arrows_counterclockwise: : ${title}** **(LIVE)** | *${ video.channelTitle }*`)
+		}else{
+    	return interaction.editReply(`**Added to Queue :arrows_counterclockwise: : ${title}** (${timeHHMMSS}) | *${ video.channelTitle }*`)			
+		}
   })
 }
 

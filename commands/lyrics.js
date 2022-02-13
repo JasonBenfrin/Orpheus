@@ -1,13 +1,13 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js')
-require('dotenv').config();
-const ytKey = process.env.ytAPI
+// const yts = require('yt-search');
+const ytKey = process.env['ytAPI']
 const search = require('youtube-search')
 const lyFind = require('lyrics-finder')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('2lyrics')
+		.setName('lyrics')
 		.setDescription('Shows the lyrics of the song')
     .addStringOption(option => 
       option

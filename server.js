@@ -1,18 +1,16 @@
 const express = require("express")
-const app = express()
-require('dotenv').config()
+const server = express()
 
-app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname)));
 
-app.all("/",(req,res)=>{
-  res.render("../err/404.html")
-} );
+server.all("/",(req,res)=>{
+  res.sendFile(path.join(__dirname+'/err/index.htm'))
+});
 
 function keepAlive(){
-  const port = process.env.PORT || 3000
-  app.listen(port,()=>{
-    console.log(`Server listening at port ${port}`)
+  server.listen(3000,()=>{
+    console.log("Alive")
   })
 }
 
-module.exports = { keepAlive }
+module.exports=keepAlive

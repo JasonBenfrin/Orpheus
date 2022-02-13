@@ -5,9 +5,7 @@ module.exports = {
     const index = require('../index')
 
     console.log(`Logged in as ${index.client.user.tag}`);
-    index.client.guilds.cache.forEach(guild => {
-      index.updateCommands(guild.id)
-    })
+    index.updateCommands()
 
     index.client.connectionManager = new Map();
     index.client.playlistManager = new Map();

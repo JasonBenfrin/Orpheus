@@ -3,7 +3,7 @@ const { search } = require('../functions/search.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('2playnext')
+		.setName('playnext')
 		.setDescription('Plays the requested song after current song.')
     .addStringOption(option => 
       option

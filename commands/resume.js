@@ -3,7 +3,7 @@ const { valid } = require('../functions/valid')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('2resume')
+		.setName('resume')
 		.setDescription('Resumes the song.'),
 	async execute(interaction) {
     const player = interaction.client.playerManager.get(interaction.guildId)

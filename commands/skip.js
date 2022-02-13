@@ -3,7 +3,7 @@ const { valid } = require('../functions/valid.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('2skip')
+		.setName('skip')
 		.setDescription('Skips the current song from the queue.'),
 	async execute(interaction) {
     const me = interaction.guild.me.voice.channelId;

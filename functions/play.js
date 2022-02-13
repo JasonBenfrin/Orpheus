@@ -1,12 +1,26 @@
 const { AudioPlayerStatus, createAudioPlayer, joinVoiceChannel, createAudioResource } = require("@discordjs/voice")
 const ytdl = require('ytdl-core')
+const fs = require('fs')
 
 function play(client, guildId, player, connection) {
   let queue = client.queueManager.get(guildId)
   let currentSong = queue[0];
   if(!client.playerManager.get(guildId)) return
 	if(!currentSong) return
-  const stream = ytdl(currentSong.url, {filter:'audioonly', highWaterMark: 1<<25})
+	let options = "";
+	if(currentSong.live) {
+		options = {
+			highWaterMark: 1<<25,
+			quality: [91,92,93,94,95],
+			liveBuffer: 4900,
+		}
+	}else{
+		options = {
+			filter:'audioonly',
+			highWaterMark: 1<<25,
+		}
+	}
+  const stream = ytdl(currentSong.url, options)
   const resource = createAudioResource(stream)
   player.play(resource)
   connection.subscribe(player)
@@ -41,7 +55,7 @@ module.exports = {
       const player = createAudioPlayer();
       client.playerManager.set(interaction.guildId, player)
       
-      play(client, interaction.guildId, player, connection)
+			play(client, interaction.guildId, player, connection)
 
       player.on(AudioPlayerStatus.Idle, () => {
         let queue = client.queueManager.get(interaction.guildId)

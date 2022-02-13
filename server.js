@@ -1,14 +1,15 @@
 const express = require("express")
-const server = express()
+const app = express()
+const port = process.env.PORT || 3000
 
 app.use(express.static(path.join(__dirname)));
 
-server.all("/",(req,res)=>{
+app.all("/",(req,res)=>{
   res.sendFile(path.join(__dirname+'/err/index.htm'))
 });
 
 function keepAlive(){
-  server.listen(3000,()=>{
+  app.listen(port,()=>{
     console.log("Alive")
   })
 }

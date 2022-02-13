@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
-const token = process.env['token']
+const token = process.env.token
 const updateCommands = require('./deploy-commands')
 const keepAlive = require('./server.js')
 

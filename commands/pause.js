@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { valid } = require('../functions/valid')
 
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('pause')

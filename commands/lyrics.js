@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js')
+require('dotenv').config()
 const ytKey = process.env.ytAPI
 const search = require('youtube-search')
 const lyFind = require('lyrics-finder')

@@ -32,5 +32,13 @@
   "devDependencies": {
     "node": "^16.13.1"
   },
-  "description": ""
+  "description": "Discord Music bot: Orpheus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonBenfrin/Orpheus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JasonBenfrin/Orpheus/issues"
+  },
+  "homepage": "https://github.com/JasonBenfrin/Orpheus#readme"
 }

@@ -4,6 +4,7 @@ require('dotenv').config()
 const token = process.env.token
 const updateCommands = require('./deploy-commands')
 const keepAlive = require('./server.js')
+const port = process.env.PORT
 
 const client = new Client({intents: new Intents(129)});
 
@@ -32,6 +33,8 @@ for (const file of eventFiles) {
 
 // client.on('debug', console.log)
 
-keepAlive()
+if(port){
+	keepAlive()
+}
 module.exports = {client,updateCommands}
 client.login(token);

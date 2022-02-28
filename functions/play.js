@@ -12,7 +12,7 @@ function play(client, guildId, player, connection) {
 		options = {
 			highWaterMark: 1<<25,
 			quality: [91,92,93,94,95],
-			liveBuffer: 4900,
+			liveBuffer: 1,
 		}
 	}else{
 		options = {
@@ -24,7 +24,6 @@ function play(client, guildId, player, connection) {
   const resource = createAudioResource(stream)
   player.play(resource)
   connection.subscribe(player)
-  //TODO might have to move the connection
 }
 
 function looping(client, loop, guildId){

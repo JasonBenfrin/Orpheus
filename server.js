@@ -4,10 +4,14 @@ require('dotenv').config()
 const port = process.env.PORT || 3000
 const path = require('path')
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname,'/public')));
 
-app.all("/",(req,res)=>{
-  res.sendFile(path.join(__dirname+'/err/index.htm'))
+app.get('/status',(req,res) => {
+	res.send('I\'m Alive.')
+})
+
+app.all("/*",(req,res)=>{
+	res.sendFile(path.join(__dirname,'/public/err/404.html'))
 });
 
 function keepAlive(){

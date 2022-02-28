@@ -11,7 +11,7 @@ module.exports = {
 
     if(!valid(interaction)) return
     if(me != user) return interaction.reply('**You are not in the same channel as me!**')
-
+		
     let player = interaction.client.playerManager.get(interaction.guildId)
 		if(player) player.stop()
     let connection = interaction.client.connectionManager.get(interaction.guildId)

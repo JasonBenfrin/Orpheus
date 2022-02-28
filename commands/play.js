@@ -27,5 +27,6 @@ module.exports = {
     await interaction.reply(`**Searching for :** *${interaction.options.getString('keywords')}*`)
 
     search(interaction.options.getString('keywords'), interaction, false)
+		interaction.client.lastChannel.set(interaction.guildId, interaction.channel)
 	}
 };

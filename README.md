@@ -7,7 +7,7 @@ Discord Music Bot: [Orpheus](https://discord.com/api/oauth2/authorize?client_id=
 ### How to Use
 1. Clone this repository by running this code in cmd:
 	```
-		git clone https://github.com/JasonBenfrin/Orphues.git
+	git clone https://github.com/JasonBenfrin/Orpheus.git
 	```
 2. Make a .env file with the configurations as below:
 	```json

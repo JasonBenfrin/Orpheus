@@ -8,10 +8,9 @@ module.exports = {
 		}else{
 			channel = client.channels.cache.get(oldState.channelId)
 		}
-		console.log(channel.members.size)
-		if(channel.members.size == 1){
+		if(channel.members.size == 1  && channel.members.get(client.user.id)) {
 			var timeout = setTimeout(() => {
-				if(channel.members.size == 1){
+				if(channel.members.size == 1) {
 					const guildId = newState.guild.id
 					let player = client.playerManager.get(guildId)
 					if(player) player.stop()
@@ -33,7 +32,7 @@ module.exports = {
 			}, 300000)
 			client.timeout.set(newState.guild.id, timeout)
 		}else{
-			if(client.timeout) clearTimeout(client.timeout.get(newState.guild.id))
+			if(client.timeout.get(newState.guild.id)) clearTimeout(client.timeout.get(newState.guild.id))
 		}
   }
 }

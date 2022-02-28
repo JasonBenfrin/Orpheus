@@ -20,7 +20,7 @@ Discord Music Bot: [Orpheus](https://discord.com/api/oauth2/authorize?client_id=
 	```
 	`clientId`: Application ID of your [Discord Bot](https://discord.com/developers/applications/).  
 	`token`: Token to login to [Discord Bot](https://discord.com/developers/applications/).  
-	`ytAPI`: API key from [Google console](916244674262495232).  
+	`ytAPI`: API key from [Google console](https://console.cloud.google.com/apis/credentials).  
 	`PORT`: The port to open the server to. _(optional)_
  
 3. Run: `npm run start`.
